@@ -5,10 +5,7 @@
 #include "CoreMinimal.h"
 #include "Async/AsyncWork.h"
 
-/**
- * 
- */
-class MYPROJECT03_API FMyAsyncClass : public FNonAbandonableTask
+class MYPROJECT02_API FMyAsyncClass : public FNonAbandonableTask
 {
 	friend class FAutoDeleteAsyncTask<FMyAsyncClass>;//ÓÑÔªÀà
 public:

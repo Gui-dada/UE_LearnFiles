@@ -7,7 +7,7 @@
 #include "MyTextAsyncActor.generated.h"
 
 UCLASS()
-class MYPROJECT03_API AMyTextAsyncActor : public AActor
+class MYPROJECT02_API AMyTextAsyncActor : public AActor
 {
 	GENERATED_BODY()
 	
