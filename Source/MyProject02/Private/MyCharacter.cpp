@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "MyCharacter.h"
@@ -9,33 +9,33 @@ AMyCharacter::AMyCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bCanEverTick = true;
-	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));//´´½¨µ¯»É±Û
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));//´´½¨Ïà»ú
-	MyWidgetHealth = CreateDefaultSubobject<UWidgetComponent>(TEXT("MyWidgetHealth"));//´´½¨Ğ¡²¿¼ş×é¼ş
-	MyWidgetHealth->SetupAttachment(RootComponent);//ÉèÖÃĞ¡²¿¼ş×é¼ş¸½¼Óµ½¸ù×é¼ş
-	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UMGWidget.UMGWidget_C'"));//²éÕÒĞ¡²¿¼şÀ¶Í¼
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));//åˆ›å»ºå¼¹ç°§è‡‚
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));//åˆ›å»ºç›¸æœº
+	MyWidgetHealth = CreateDefaultSubobject<UWidgetComponent>(TEXT("MyWidgetHealth"));//åˆ›å»ºå°éƒ¨ä»¶ç»„ä»¶
+	MyWidgetHealth->SetupAttachment(RootComponent);//è®¾ç½®å°éƒ¨ä»¶ç»„ä»¶é™„åŠ åˆ°æ ¹ç»„ä»¶
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetAsset(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UMGWidget.UMGWidget_C'"));//æŸ¥æ‰¾å°éƒ¨ä»¶è“å›¾
 	if (WidgetAsset.Succeeded()) {
-		MyWidgetHealth->SetWidgetClass(WidgetAsset.Class);//ÉèÖÃĞ¡²¿¼şÀà
+		MyWidgetHealth->SetWidgetClass(WidgetAsset.Class);//è®¾ç½®å°éƒ¨ä»¶ç±»
 	}
-	MyWidgetHealth->SetRelativeLocation(FVector(0, 0, 100));//ÉèÖÃĞ¡²¿¼şÎ»ÖÃ
-	MyWidgetHealth->SetWidgetSpace(EWidgetSpace::Screen);//ÉèÖÃĞ¡²¿¼ş¿Õ¼ä
-	MyWidgetHealth->SetDrawSize(FVector2D(400, 20));//ÉèÖÃĞ¡²¿¼ş´óĞ¡
-	SpringArm->TargetArmLength = 400;//ÉèÖÃÏà»ú¾àÀë
-	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);//ÉèÖÃÏà»ú¸½¼Óµ½µ¯»É±Û
-	SpringArm->SetupAttachment(RootComponent);//ÉèÖÃµ¯»É±Û¸½¼Óµ½¸ù×é¼ş
-	SpringArm->bUsePawnControlRotation = true;//ÉèÖÃµ¯»É±ÛÊ¹ÓÃPawn¿ØÖÆĞı×ª
+	MyWidgetHealth->SetRelativeLocation(FVector(0, 0, 100));//è®¾ç½®å°éƒ¨ä»¶ä½ç½®
+	MyWidgetHealth->SetWidgetSpace(EWidgetSpace::Screen);//è®¾ç½®å°éƒ¨ä»¶ç©ºé—´
+	MyWidgetHealth->SetDrawSize(FVector2D(400, 20));//è®¾ç½®å°éƒ¨ä»¶å¤§å°
+	SpringArm->TargetArmLength = 400;//è®¾ç½®ç›¸æœºè·ç¦»
+	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);//è®¾ç½®ç›¸æœºé™„åŠ åˆ°å¼¹ç°§è‡‚
+	SpringArm->SetupAttachment(RootComponent);//è®¾ç½®å¼¹ç°§è‡‚é™„åŠ åˆ°æ ¹ç»„ä»¶
+	SpringArm->bUsePawnControlRotation = true;//è®¾ç½®å¼¹ç°§è‡‚ä½¿ç”¨Pawnæ§åˆ¶æ—‹è½¬
 
-	bUseControllerRotationPitch = false;//ÉèÖÃ¿ØÖÆÆ÷¸©Ñö
-	bUseControllerRotationRoll = false;//ÉèÖÃ¿ØÖÆÆ÷¹ö¶¯
-	bUseControllerRotationYaw = false;//ÉèÖÃ¿ØÖÆÆ÷Æ«º½
+	bUseControllerRotationPitch = false;//è®¾ç½®æ§åˆ¶å™¨ä¿¯ä»°
+	bUseControllerRotationRoll = false;//è®¾ç½®æ§åˆ¶å™¨æ»šåŠ¨
+	bUseControllerRotationYaw = false;//è®¾ç½®æ§åˆ¶å™¨åèˆª
 
-	GetCharacterMovement()->bOrientRotationToMovement = true;//ÉèÖÃ½ÇÉ«ÒÆ¶¯×é¼şĞı×ªµ½ÒÆ¶¯·½Ïò
+	GetCharacterMovement()->bOrientRotationToMovement = true;//è®¾ç½®è§’è‰²ç§»åŠ¨ç»„ä»¶æ—‹è½¬åˆ°ç§»åŠ¨æ–¹å‘
 }
 
 // Called when the game starts or when spawned
 void AMyCharacter::BeginPlay()
 {
-	Super::BeginPlay();//µ÷ÓÃ¸¸ÀàµÄBeginPlayº¯Êı
+	Super::BeginPlay();//è°ƒç”¨çˆ¶ç±»çš„BeginPlayå‡½æ•°
 	if (Controller != nullptr)
 	{
 		if (APlayerController* pcp = Cast<APlayerController>(Controller))
@@ -46,11 +46,11 @@ void AMyCharacter::BeginPlay()
 			}
 		}
 	}
-	Attack();//¹¥»÷
-	CalculateBleed();//¼ÆËãÁ÷Ñª
-	//ÉèÖÃ¶¨Ê±Æ÷ (¾ä±ú ,¶ÔÏó ,ÒıÓÃ°ó¶¨µÄº¯Êı,Ñ­»·Ê±¼ä,ÊÇ·ñ´òÓ¡)
+	Attack();//æ”»å‡»
+	CalculateBleed();//è®¡ç®—æµè¡€
+	//è®¾ç½®å®šæ—¶å™¨ (å¥æŸ„ ,å¯¹è±¡ ,å¼•ç”¨ç»‘å®šçš„å‡½æ•°,å¾ªç¯æ—¶é—´,æ˜¯å¦æ‰“å°)
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AMyCharacter::TimerFunction, 1.0f, true);
-	//Ïû³ı¶¨Ê±Æ÷
+	//æ¶ˆé™¤å®šæ—¶å™¨
 	if (TimerHandle.IsValid()) {
 		GetWorldTimerManager().ClearTimer(TimerHandle);
 	}
@@ -60,40 +60,40 @@ void AMyCharacter::BeginPlay()
 void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	StartLocation = Camera->GetComponentLocation();//»ñÈ¡Ïà»úÎ»ÖÃ
-	ForwardVector = Camera->GetForwardVector();//»ñÈ¡Ïà»úÇ°ÏòÁ¿
-	EndLocation = StartLocation + ForwardVector * 10000;//»ñÈ¡½áÊøÎ»ÖÃ
-	//¸ù¾İÍ¨µÀ¼ì²â·µ»ØµÄ½á¹û
-	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility);//ÉäÏß¼ì²â
+	StartLocation = Camera->GetComponentLocation();//è·å–ç›¸æœºä½ç½®
+	ForwardVector = Camera->GetForwardVector();//è·å–ç›¸æœºå‰å‘é‡
+	EndLocation = StartLocation + ForwardVector * 10000;//è·å–ç»“æŸä½ç½®
+	//æ ¹æ®é€šé“æ£€æµ‹è¿”å›çš„ç»“æœ
+	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility);//å°„çº¿æ£€æµ‹
 	if(bHit)
 	{
-		AActor* HitActor = HitResult.GetActor();//»ñÈ¡Åö×²µÄactor
-		FVector hitpoint = HitResult.ImpactPoint;//»ñÈ¡Åö×²Î»ÖÃ
-		FVector HitLocation = HitResult.ImpactPoint;//»ñÈ¡Åö×²Î»ÖÃ
+		AActor* HitActor = HitResult.GetActor();//è·å–ç¢°æ’çš„actor
+		FVector hitpoint = HitResult.ImpactPoint;//è·å–ç¢°æ’ä½ç½®
+		FVector HitLocation = HitResult.ImpactPoint;//è·å–ç¢°æ’ä½ç½®
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, FString::Printf(TEXT("LineTraceSingleByChannel------*HitActor->GetName : %s"),*HitActor->GetName()));
 
 	}
 
-	//¸ù¾İ¶ÔÏó¼ì²â·µ»ØµÄ½á¹û
+	//æ ¹æ®å¯¹è±¡æ£€æµ‹è¿”å›çš„ç»“æœ
 	FCollisionObjectQueryParams ObjectQueryParams;
 	ObjectQueryParams.AddObjectTypesToQuery(ECC_WorldDynamic);
-	bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, ObjectQueryParams);//ÉäÏß¼ì²â
+	bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, ObjectQueryParams);//å°„çº¿æ£€æµ‹
 	if (bHit2)
 	{
-		AActor* HitActor2 = HitResult.GetActor();//»ñÈ¡Åö×²µÄactor
-		FVector hitpoint2 = HitResult.ImpactPoint;//»ñÈ¡Åö×²Î»ÖÃ
-		FVector HitLocation2 = HitResult.ImpactPoint;//»ñÈ¡Åö×²Î»ÖÃ
+		AActor* HitActor2 = HitResult.GetActor();//è·å–ç¢°æ’çš„actor
+		FVector hitpoint2 = HitResult.ImpactPoint;//è·å–ç¢°æ’ä½ç½®
+		FVector HitLocation2 = HitResult.ImpactPoint;//è·å–ç¢°æ’ä½ç½®
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, FString::Printf(TEXT("LineTraceSingleByObjectType------*HitActor->GetName : %s"), *HitActor2->GetName()));
 	}
 
-	bool HitRetMulti = GetWorld()->LineTraceMultiByChannel(HitResults, StartLocation, EndLocation, ECC_Visibility);//ÉäÏß¼ì²â
+	bool HitRetMulti = GetWorld()->LineTraceMultiByChannel(HitResults, StartLocation, EndLocation, ECC_Visibility);//å°„çº¿æ£€æµ‹
 	if (HitRetMulti)
 	{
 		for (int32 i = 0; i < HitResults.Num(); i++)
 		{
-			AActor* HitActor3 = HitResults[i].GetActor();//»ñÈ¡Åö×²µÄactor
-			FVector hitpoint3 = HitResults[i].ImpactPoint;//»ñÈ¡Åö×²Î»ÖÃ
-			FVector HitLocation3 = HitResults[i].ImpactPoint;//»ñÈ¡Åö×²Î»ÖÃ
+			AActor* HitActor3 = HitResults[i].GetActor();//è·å–ç¢°æ’çš„actor
+			FVector hitpoint3 = HitResults[i].ImpactPoint;//è·å–ç¢°æ’ä½ç½®
+			FVector HitLocation3 = HitResults[i].ImpactPoint;//è·å–ç¢°æ’ä½ç½®
 			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, FString::Printf(TEXT("LineTraceMultiByChannel------*HitActor->GetName : %s"), *HitActor3->GetName()));
 		}
 	}
@@ -108,12 +108,12 @@ void AMyCharacter::Tick(float DeltaTime)
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))//Ç¿ÖÆ×ª»»
+	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))//å¼ºåˆ¶è½¬æ¢
 	{
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);//°ó¶¨ÒÆ¶¯
-		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);//°ó¶¨ÒÆ¶¯
-		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);//°ó¶¨²é¿´
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);//°ó¶¨²é¿´
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);//ç»‘å®šç§»åŠ¨
+		//EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);//ç»‘å®šç§»åŠ¨
+		//EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);//ç»‘å®šæŸ¥çœ‹
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);//ç»‘å®šæŸ¥çœ‹
 	}
 }
 
@@ -122,15 +122,15 @@ void AMyCharacter::Move(const FInputActionValue& value)
 	FVector2D MoveMent = value.Get<FVector2D>();
 	if (Controller != nullptr)
 	{
-		const FRotator ControlRot = Controller->GetControlRotation();//»ñÈ¡¿ØÖÆÆ÷µÄĞı×ª
-		const FRotator ControlYawRot(0, ControlRot.Yaw, 0);//»ñÈ¡¿ØÖÆÆ÷µÄÆ«º½Ğı×ª
-		const FVector ForwardDirection = FRotationMatrix(ControlYawRot).GetUnitAxis(EAxis::X);//»ñÈ¡Ç°ºó
-		const FVector RightForward = FRotationMatrix(ControlYawRot).GetUnitAxis(EAxis::Y);//»ñÈ¡×óÓÒ
+		const FRotator ControlRot = Controller->GetControlRotation();//è·å–æ§åˆ¶å™¨çš„æ—‹è½¬
+		const FRotator ControlYawRot(0, ControlRot.Yaw, 0);//è·å–æ§åˆ¶å™¨çš„åèˆªæ—‹è½¬
+		const FVector ForwardDirection = FRotationMatrix(ControlYawRot).GetUnitAxis(EAxis::X);//è·å–å‰å
+		const FVector RightForward = FRotationMatrix(ControlYawRot).GetUnitAxis(EAxis::Y);//è·å–å·¦å³
 
 		//AddMovementInput(Direction, MoveMent.X);
 		//AddMovementInput(Direction, MoveMent.Y);
-		AddMovementInput(RightForward, MoveMent.X);//Ìí¼ÓÇ°ºóÒÆ¶¯ÊäÈë
-		AddMovementInput(ForwardDirection, MoveMent.Y);//Ìí¼Ó×óÓÒÒÆ¶¯ÊäÈë
+		AddMovementInput(RightForward, MoveMent.X);//æ·»åŠ å‰åç§»åŠ¨è¾“å…¥
+		AddMovementInput(ForwardDirection, MoveMent.Y);//æ·»åŠ å·¦å³ç§»åŠ¨è¾“å…¥
 
 	}
 }
@@ -140,23 +140,23 @@ void AMyCharacter::Look(const FInputActionValue& value)
 
 	FVector2D LookAxisVector = value.Get<FVector2D>();
 	if (Controller != nullptr) {
-		AddControllerYawInput(LookAxisVector.X);//Ìí¼Ó¿ØÖÆÆ÷xÖáÊäÈë
-		AddControllerPitchInput(LookAxisVector.Y);//Ìí¼Ó¿ØÖÆÆ÷yÖáÊäÈë
+		AddControllerYawInput(LookAxisVector.X);//æ·»åŠ æ§åˆ¶å™¨xè½´è¾“å…¥
+		AddControllerPitchInput(LookAxisVector.Y);//æ·»åŠ æ§åˆ¶å™¨yè½´è¾“å…¥
 	}
 }
 
 void AMyCharacter::Attack()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::Attack() ")));//Ìí¼ÓÆÁÄ»µ÷ÊÔĞÅÏ¢
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::Attack() ")));//æ·»åŠ å±å¹•è°ƒè¯•ä¿¡æ¯
 }
 
 void AMyCharacter::CalculateBleed()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::CalculateBleed() ")));//Ìí¼ÓÆÁÄ»µ÷ÊÔĞÅÏ¢
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::CalculateBleed() ")));//æ·»åŠ å±å¹•è°ƒè¯•ä¿¡æ¯
 }
 
 void AMyCharacter::TimerFunction()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::TimerFunction() ")));//Ìí¼ÓÆÁÄ»µ÷ÊÔĞÅÏ¢
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::TimerFunction() ")));//æ·»åŠ å±å¹•è°ƒè¯•ä¿¡æ¯
 }
 
