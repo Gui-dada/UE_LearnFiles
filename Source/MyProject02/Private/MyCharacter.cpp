@@ -6,7 +6,7 @@
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	PrimaryActorTick.bCanEverTick = true;
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));//创建弹簧臂
@@ -30,6 +30,9 @@ AMyCharacter::AMyCharacter()
 	bUseControllerRotationYaw = false;//设置控制器偏航
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;//设置角色移动组件旋转到移动方向
+	
+	// [AI] 初始化Health属性为100
+	Health = 100.0f;
 }
 
 // Called when the game starts or when spawned
@@ -160,3 +163,9 @@ void AMyCharacter::TimerFunction()
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT(" void AMyCharacter::TimerFunction() ")));//添加屏幕调试信息
 }
 
+// [AI] 添加 ApplyDamage 函数实现
+void AMyCharacter::ApplyDamage(float Damage)
+{
+	Score -= Damage;
+	UE_LOG(LogTemp, Warning, TEXT("AMyCharacter::ApplyDamage - Score: %d"), Score);
+}

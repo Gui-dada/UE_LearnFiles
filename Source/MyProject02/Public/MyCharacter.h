@@ -1,16 +1,17 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
+
 #pragma once
 
 #include "CoreMinimal.h"
 #include "EnhancedInputComponent.h"
 #include "InputActionValue.h"
 #include "EnhancedInputSubsystems.h"
-#include "GameFramework/Controller.h"//¿ØÖÆÆ÷
+#include "GameFramework/Controller.h"//æ§åˆ¶å™¨
 #include "GameFramework/Character.h"//
-#include "GameFramework/SpringArmComponent.h"//µ¯»É±Û
-#include "Camera/CameraComponent.h"//ÉãÏñ»ú
-#include "GameFramework/CharacterMovementComponent.h"//½ÇÉ«ÒÆ¶¯×é¼ş
-#include "MyInterface.h"//½Ó¿Ú
+#include "GameFramework/SpringArmComponent.h"//å¼¹ç°§è‡‚
+#include "Camera/CameraComponent.h"//æ‘„åƒæœº
+#include "GameFramework/CharacterMovementComponent.h"//è§’è‰²ç§»åŠ¨ç»„ä»¶
+#include "MyInterface.h"//æ¥å£
 #include "TimerManager.h"
 #include "Components/WidgetComponent.h"
 #include "MyCharacter.generated.h"
@@ -28,43 +29,56 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
-		USpringArmComponent* SpringArm;
+	USpringArmComponent* SpringArm;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
-		UCameraComponent* Camera;
+	UCameraComponent* Camera;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
-		class UInputMappingContext* InputMappingContext;
+	class UInputMappingContext* InputMappingContext;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
-		class UInputAction* MoveAction;
+	class UInputAction* MoveAction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
-		class UInputAction* LookAction;
+	class UInputAction* LookAction;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
-	    UWidgetComponent* MyWidgetHealth;
-
+	UWidgetComponent* MyWidgetHealth;
 
 	void Move(const FInputActionValue& value);
 	void Look(const FInputActionValue& value);
 
-	//ÖØĞ´½Ó¿Úº¯Êı
+	//é‡å†™æ¥å£å‡½æ•°
 	virtual void Attack() override;
 	virtual void CalculateBleed() override;
-	
 
-	FTimerHandle TimerHandle;//¶¨Ê±Æ÷¾ä±ú
-	void TimerFunction();//¶¨Ê±Æ÷º¯Êı
 
-	//ÉäÏß
+	FTimerHandle TimerHandle;//å®šæ—¶å™¨å¥æŸ„
+	void TimerFunction();//å®šæ—¶å™¨å‡½æ•°
+
+	//å°„çº¿
 	FVector StartLocation;
 	FVector ForwardVector;
 	FVector EndLocation;
 	FHitResult HitResult;
 	TArray <FHitResult> HitResults;//
 
-	
+	// [AI] æ·»åŠ  Score å±æ€§
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Gameplay")
+	int32 Score;
+
+	// [AI] æ·»åŠ  Level å±æ€§
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Gameplay")
+	int32 Level;
+
+	// [AI] æ·»åŠ  Health å±æ€§
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Gameplay")
+	float Health;
+
+	// [AI] æ·»åŠ  ApplyDamage å‡½æ•°
+	UFUNCTION(BlueprintCallable, Category = "Gameplay")
+	void ApplyDamage(float Damage);
 };

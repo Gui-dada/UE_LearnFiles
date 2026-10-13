@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "MySoftReferenceActor.h"
@@ -16,33 +16,33 @@ AMySoftReferenceActor::AMySoftReferenceActor()
 void AMySoftReferenceActor::BeginPlay()
 {
 	
-	Super::BeginPlay();//¼Ì³Ğ¸¸ÀàBeginPlayº¯Êı
-	//Í¬²½¼ÓÔØ×ÊÔ´
-	FSoftObjectPath Path1 = TEXT("/Script/Engine.Texture2D'/Game/StarterContent/Textures/T_Brick_Clay_Beveled_D.T_Brick_Clay_Beveled_D'");
-	TSharedPtr<FStreamableHandle> SycStreamHandle1 = UAssetManager::GetStreamableManager().RequestSyncLoad(Path1);//ÇëÇóÍ¬²½¼ÓÔØ×ÊÔ´
+	Super::BeginPlay();//ç»§æ‰¿çˆ¶ç±»BeginPlayå‡½æ•°
+	//åŒæ­¥åŠ è½½èµ„æº
+	FSoftObjectPath Path1(TEXT("/Script/Engine.Texture2D'/Game/StarterContent/Textures/T_Brick_Clay_Beveled_D.T_Brick_Clay_Beveled_D'"));
+	TSharedPtr<FStreamableHandle> SycStreamHandle1 = UAssetManager::GetStreamableManager().RequestSyncLoad(Path1);//è¯·æ±‚åŒæ­¥åŠ è½½èµ„æº
 	if (SycStreamHandle1.IsValid())
 	{
-		SycStreamHandle1->WaitUntilComplete();//µÈ´ı¼ÓÔØÍê³É
-		UTexture2D* Texture = Cast<UTexture2D>(SycStreamHandle1->GetLoadedAsset());//µ¼ÈëµÄ×ÊÔ´
+		SycStreamHandle1->WaitUntilComplete();//ç­‰å¾…åŠ è½½å®Œæˆ
+		UTexture2D* Texture = Cast<UTexture2D>(SycStreamHandle1->GetLoadedAsset());//å¯¼å…¥çš„èµ„æº
 		if (Texture)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("SycStreamHandle1 : Texture->GetName : %s"), *Texture->GetName()));//Ìí¼ÓÆÁÄ»µ÷ÊÔĞÅÏ¢
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("SycStreamHandle1 : Texture->GetName : %s"), *Texture->GetName()));//æ·»åŠ å±å¹•è°ƒè¯•ä¿¡æ¯
 		}
-		//ÊÍ·Å×ÊÔ´
+		//é‡Šæ”¾èµ„æº
 		SycStreamHandle1->ReleaseHandle();
 	}
-	//Òì²½¼ÓÔØ×ÊÔ´
-	FSoftObjectPath Path2 = TEXT("/Script/Engine.Texture2D'/Game/StarterContent/Textures/T_Brick_Clay_Beveled_M.T_Brick_Clay_Beveled_M'");//×ÊÔ´Â·¾¶
-	TSharedPtr<FStreamableHandle> AsycStreamHandle1 = UAssetManager::GetStreamableManager().RequestAsyncLoad(Path2);//ÇëÇóÒì²½¼ÓÔØ×ÊÔ´
+	//å¼‚æ­¥åŠ è½½èµ„æº
+	FSoftObjectPath Path2(TEXT("/Script/Engine.Texture2D'/Game/StarterContent/Textures/T_Brick_Clay_Beveled_M.T_Brick_Clay_Beveled_M'"));
+	TSharedPtr<FStreamableHandle> AsycStreamHandle1 = UAssetManager::GetStreamableManager().RequestAsyncLoad(Path2);//è¯·æ±‚å¼‚æ­¥åŠ è½½èµ„æº
 	if (AsycStreamHandle1.IsValid())
 	{
-		AsycStreamHandle1->WaitUntilComplete();//µÈ´ı¼ÓÔØÍê³É
-		UTexture2D* Texture = Cast<UTexture2D>(SycStreamHandle1->GetLoadedAsset());//µ¼ÈëµÄ×ÊÔ´
+		AsycStreamHandle1->WaitUntilComplete();//ç­‰å¾…åŠ è½½å®Œæˆ
+		UTexture2D* Texture = Cast<UTexture2D>(SycStreamHandle1->GetLoadedAsset());//å¯¼å…¥çš„èµ„æº
 		if (Texture)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("AsycStreamHandle1 : Texture->GetName : %s"), *Texture->GetName()));//Ìí¼ÓÆÁÄ»µ÷ÊÔĞÅÏ¢
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString::Printf(TEXT("AsycStreamHandle1 : Texture->GetName : %s"), *Texture->GetName()));//æ·»åŠ å±å¹•è°ƒè¯•ä¿¡æ¯
 		}
-		//ÊÍ·Å×ÊÔ´
+		//é‡Šæ”¾èµ„æº
 		AsycStreamHandle1->ReleaseHandle();
 	}
 }
@@ -50,7 +50,7 @@ void AMySoftReferenceActor::BeginPlay()
 // Called every frame
 void AMySoftReferenceActor::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);//¼Ì³Ğ¸¸ÀàTickº¯Êı
+	Super::Tick(DeltaTime);//ç»§æ‰¿çˆ¶ç±»Tickå‡½æ•°
 
 }
 

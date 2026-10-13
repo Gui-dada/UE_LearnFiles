@@ -1,0 +1,77 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "UE Agent: 提问",
+            "type": "shell",
+            "command": "E:\\AI\\ue_agent\\.venv\\Scripts\\python.exe",
+            "args": [
+                "E:\\AI\\ue_agent\\agent.py",
+                "--continue",
+                "${input:question}"
+            ],
+            "options": {
+                "cwd": "E:\\AI\\ue_agent",
+                "env": {
+                    "UE_AGENT_PROJECT": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true,
+                "clear": true
+            }
+        },
+        {
+            "label": "UE Agent: 新问题（新会话）",
+            "type": "shell",
+            "command": "E:\\AI\\ue_agent\\.venv\\Scripts\\python.exe",
+            "args": [
+                "E:\\AI\\ue_agent\\agent.py",
+                "--new",
+                "${input:question}"
+            ],
+            "options": {
+                "cwd": "E:\\AI\\ue_agent",
+                "env": {
+                    "UE_AGENT_PROJECT": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true,
+                "clear": true
+            }
+        },
+        {
+            "label": "UE Agent: 交互式 REPL",
+            "type": "shell",
+            "command": "E:\\AI\\ue_agent\\.venv\\Scripts\\python.exe",
+            "args": ["E:\\AI\\ue_agent\\agent.py"],
+            "options": {
+                "cwd": "E:\\AI\\ue_agent",
+                "env": {
+                    "UE_AGENT_PROJECT": "${workspaceFolder}"
+                }
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "focus": true,
+                "clear": true
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "question",
+            "type": "promptString",
+            "description": "问 UE Agent 什么问题？"
+        }
+    ]
+}
