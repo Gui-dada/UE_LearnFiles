@@ -15,10 +15,11 @@ public class MyProject02 : ModuleRules
 			"InputCore",
             "EnhancedInput"
         });
-		//Ìí¼ÓjsonÄ£¿é
+		//ï¿½ï¿½ï¿½ï¿½jsonÄ£ï¿½ï¿½
 		PrivateDependencyModuleNames.AddRange(new string[] {
             "Json",
-            "JsonUtilities"
+            "JsonUtilities",
+			"HTTP"
         });
 
 		// Uncomment if you are using Slate UI
